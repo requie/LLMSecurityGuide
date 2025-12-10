@@ -16,7 +16,7 @@
 
 -----
 
-## 🚨 **CRITICAL UPDATE - December 2024**
+## 🚨 **CRITICAL UPDATE - December 2025**
 
 This guide has been completely updated to reflect the **OWASP Top 10 for LLM Applications 2025** (released November 18, 2024) and the rapidly evolving AI security landscape. Key additions include **Agentic AI Security**, **RAG Vulnerabilities**, **System Prompt Leakage**, and **Vector/Embedding Weaknesses**.
 
