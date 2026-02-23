@@ -1,4 +1,4 @@
-# 🛡️ LLM Security 101: The Complete Guide (2025 Edition)
+# 🛡️ LLM Security 101: The Complete Guide (2026 Edition)
 
 <div align="center">
 
@@ -7,9 +7,9 @@
 ![OWASP 2025](https://img.shields.io/badge/OWASP-2025/2026-green?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Contributions](https://img.shields.io/badge/Contributions-Welcome-orange?style=for-the-badge)
-![Updated](https://img.shields.io/badge/Updated-December%202025-brightgreen?style=for-the-badge)
+![Updated](https://img.shields.io/badge/Updated-February%202026-brightgreen?style=for-the-badge)
 
-**A comprehensive guide to offensive and defensive security for Large Language Models and Agentic AI Systems, updated with the latest OWASP Top 10 for LLMs 2025 and the brand new OWASP Top 10 for Agentic Applications 2026.**
+**A comprehensive guide to offensive and defensive security for Large Language Models and Agentic AI Systems, updated for February 2026 with the OWASP Top 10 for LLMs 2025, corrected OWASP Top 10 for Agentic Applications 2026 (ASI prefix), new security tools, recent incidents, and AI regulation coverage.**
 
 [Overview](#overview) • [What's New](#whats-new) • [Quick Start](#quick-start) • [OWASP LLM 2025](#owasp-top-10-2025) • [🆕 OWASP Agentic 2026](#-owasp-top-10-for-agentic-applications-2026) • [Tools](#security-tools) • [Resources](#resources)
 
@@ -17,29 +17,29 @@
 
 ---
 
-## 🚨 **BREAKING UPDATE - December 10, 2025**
+## 🚨 **BREAKING UPDATE - February 2026**
 
-> ⚡ **MAJOR RELEASE**: The OWASP GenAI Security Project just released the **OWASP Top 10 for Agentic Applications 2026** at Black Hat Europe. This guide has been completely updated to include this groundbreaking new framework.
+> ⚡ **MAJOR UPDATE**: This guide has been significantly updated with critical corrections and new content for 2026. The OWASP Agentic Top 10 identifiers have been corrected from the unofficial "AAI" prefix to the official **"ASI" (Agentic Security Issue)** prefix with proper ordering per the December 2025 release. New sections cover DeepSeek R1 security concerns, recent AI security incidents, emerging red teaming tools, and AI regulations.
 
 ### 🆕 What's New in This Update
 
 | Addition | Description |
 |----------|-------------|
-| 🆕 **OWASP Agentic Top 10** | Complete coverage of all 10 agentic AI vulnerabilities (AAI01-AAI10) |
-| 🆕 **Deep Dive Sections** | Detailed analysis of Agent Goal Hijack, Memory Poisoning, Rogue Agents |
-| 🆕 **MCP Security** | Model Context Protocol security considerations |
-| 🆕 **Multi-Agent Threats** | Cascading failures and inter-agent communication risks |
-| 🆕 **AIVSS Framework** | AI Vulnerability Scoring System integration |
-| 📈 **Updated Resources** | All new OWASP GenAI Security Project publications |
+| 🔴 **ASI Prefix Correction** | Fixed OWASP Agentic Top 10 from incorrect AAI to official ASI identifiers with correct ordering |
+| 🆕 **New Security Tools** | DeepTeam, Promptfoo, ARTKIT, Meta LlamaFirewall/Llama Guard 4 |
+| 🆕 **New Case Studies** | EchoLeak (CVE-2025-32711), DeepSeek R1 vulnerabilities, first malicious MCP server |
+| 🆕 **AI Regulations** | EU AI Act 2026 milestones, NIST AI RMF, ISO/IEC 42001 |
+| 🔄 **Updated LLM Ecosystem** | GPT-5.x, Claude Opus 4.6, Gemini 3.x, Llama 4 models |
+| 📈 **Updated Resources** | New research references, red teaming tools, and regulatory resources |
 
-This guide previously covered the **OWASP Top 10 for LLM Applications 2025** (released November 18, 2024). Key additions now include **Agentic AI Security**, **RAG Vulnerabilities**, **System Prompt Leakage**, and **Vector/Embedding Weaknesses**.
+This guide covers the **OWASP Top 10 for LLM Applications 2025** (released November 18, 2024) and the **OWASP Top 10 for Agentic Applications 2026** (released December 10, 2025). Key topics include **Agentic AI Security**, **RAG Vulnerabilities**, **System Prompt Leakage**, **Vector/Embedding Weaknesses**, and **AI Compliance**.
 
 ---
 
 ## 📋 Table of Contents
 
 - [🎯 Overview](#overview)
-- [🆕 What's New in 2025](#whats-new)
+- [🆕 What's New in 2025/2026](#whats-new)
 - [🤖 Understanding LLMs](#understanding-llms)
 - [🚨 OWASP Top 10 for LLMs 2025](#owasp-top-10-2025)
 - [🆕 OWASP Top 10 for Agentic Applications 2026](#-owasp-top-10-for-agentic-applications-2026)
@@ -52,6 +52,7 @@ This guide previously covered the **OWASP Top 10 for LLM Applications 2025** (re
 - [📊 Security Assessment Framework](#security-assessment-framework)
 - [🔬 Case Studies](#case-studies)
 - [💼 Enterprise Implementation](#enterprise-implementation)
+- [🆕 AI Regulations & Compliance](#-ai-regulations--compliance-2026)
 - [📚 Resources & References](#resources)
 - [🤝 Contributing](#contributing)
 
@@ -78,7 +79,7 @@ As Large Language Models become the backbone of enterprise applications, from cu
 
 ---
 
-## 🆕 What's New in 2025
+## 🆕 What's New in 2025/2026
 
 ### **OWASP Top 10 for LLMs 2025 Major Updates**
 
@@ -104,25 +105,33 @@ Released at Black Hat Europe on December 10, 2025, this globally peer-reviewed f
 
 | Rank | Vulnerability | Description |
 |------|--------------|-------------|
-| **AAI01** | Agent Goal Hijack | Manipulating agent planning/reasoning |
-| **AAI02** | Identity & Privilege Abuse | Exploiting NHIs and permissions |
-| **AAI03** | Unexpected Code Execution | RCE in AI execution environments |
-| **AAI04** | Insecure InterAgent Communication | Multi-agent message poisoning |
-| **AAI05** | Human-Agent Trust Exploitation | Exploiting human oversight limits |
-| **AAI06** | Tool Misuse & Exploitation | Abusing agent tool integrations |
-| **AAI07** | Agentic Supply Chain | Compromised MCP servers/plugins |
-| **AAI08** | Memory & Context Poisoning | Persistent memory manipulation |
-| **AAI09** | Cascading Failures | Cross-agent vulnerability propagation |
-| **AAI10** | Rogue Agents | Agents operating outside monitoring |
+| **ASI01** | Agent Goal Hijack | Redirecting agent objectives via prompt injection, deceptive tool outputs, or poisoned data |
+| **ASI02** | Tool Misuse & Exploitation | Agents misusing legitimate tools due to prompt injection, misalignment, or unsafe delegation |
+| **ASI03** | Identity & Privilege Abuse | Exploiting inherited/cached credentials, delegated permissions, or agent-to-agent trust |
+| **ASI04** | Agentic Supply Chain Vulnerabilities | Malicious or tampered tools, descriptors, models, or agent personas |
+| **ASI05** | Unexpected Code Execution | Agents generating or executing attacker-controlled code |
+| **ASI06** | Memory & Context Poisoning | Persistent corruption of agent memory, RAG stores, or contextual knowledge |
+| **ASI07** | Insecure Inter-Agent Communication | Spoofed inter-agent messages misdirecting entire clusters |
+| **ASI08** | Cascading Failures | False signals cascading through automated pipelines with escalating impact |
+| **ASI09** | Human-Agent Trust Exploitation | Confident, polished explanations misleading human operators into approving harmful actions |
+| **ASI10** | Rogue Agents | Compromised or misaligned agents diverging from intended behavior |
+
+The framework introduces the principle of **"least agency"** — only granting agents the minimum autonomy required for safe, bounded tasks.
 
 ### **New Security Technologies**
 
-#### **Latest Security Tools (2024-2025)**
+#### **Latest Security Tools (2024-2026)**
 - **WildGuard** - Comprehensive safety and jailbreak detection
 - **AEGIS 2.0** - Advanced AI safety dataset and taxonomy
 - **BingoGuard** - Multi-level content moderation system
 - **PolyGuard** - Multilingual safety across 17 languages
 - **OmniGuard** - Cross-modal AI safety protection
+
+#### **🆕 Red Teaming & Offensive Tools (2025-2026)**
+- **DeepTeam** - Open-source LLM red teaming framework by Confident AI with 40+ vulnerability types and 10+ adversarial attack methods, supporting OWASP Top 10 and NIST AI RMF
+- **Promptfoo** - Open-source prompt injection, jailbreak, and data leak testing (30,000+ developers, CI/CD integration)
+- **ARTKIT** - Open-source framework for automated multi-turn adversarial prompt generation and attacker-target interactions
+- **Meta LlamaFirewall** - Open-source protection framework released with Llama 4, including Llama Guard 4 and Llama Prompt Guard 2
 
 #### **Enhanced Frameworks**
 - **Amazon Bedrock Guardrails** - Enterprise-grade contextual grounding
@@ -147,10 +156,10 @@ Released at Black Hat Europe on December 10, 2025, this globally peer-reviewed f
 
 | **Category** | **Examples** | **Key Characteristics** |
 |--------------|--------------|------------------------|
-| **Foundation Models** | GPT-4, Claude-4, LLaMA-3 | General-purpose, large-scale |
-| **Specialized Models** | CodeLlama, Med-PaLM, FinGPT | Domain-specific optimization |
-| **Multimodal Models** | GPT-4V, Claude-3, Gemini Ultra | Text, image, audio processing |
-| **Agentic Systems** | AutoGPT, LangChain Agents | Autonomous task execution |
+| **Foundation Models** | GPT-5.x, Claude Opus 4.6, Llama 4 | General-purpose, up to 1M+ token context windows |
+| **Specialized Models** | Codex, Med-PaLM 2, FinGPT | Domain-specific optimization |
+| **Multimodal Models** | GPT-5, Claude Opus 4.6, Gemini 3.x | Text, image, audio, video processing |
+| **Agentic Systems** | Claude Code, OpenAI Codex agent, LangChain Agents | Autonomous multi-step task execution |
 | **RAG Systems** | Enterprise search, Q&A bots | External knowledge integration |
 
 ### 🆕 What is Agentic AI?
@@ -227,27 +236,28 @@ The OWASP GenAI Security Project's Agentic Security Initiative developed this fr
 
 | **Rank** | **Vulnerability** | **Risk Level** | **Description** |
 |----------|------------------|----------------|-----------------|
-| **AAI01** | 🎯 **Agent Goal Hijack** | 🔴 CRITICAL | Manipulating agent planning/reasoning to override intended objectives |
-| **AAI02** | 🔑 **Identity & Privilege Abuse** | 🔴 CRITICAL | Exploitation of NHIs, agent credentials, and excessive permissions |
-| **AAI03** | 💻 **Unexpected Code Execution** | 🔴 CRITICAL | AI-generated execution environments exploited for RCE |
-| **AAI04** | 📡 **Insecure InterAgent Communication** | 🟠 HIGH | Manipulation of communication channels between AI agents |
-| **AAI05** | 🧠 **Human-Agent Trust Exploitation** | 🟠 HIGH | Exploiting human cognitive limits in oversight workflows |
-| **AAI06** | 🔧 **Tool Misuse & Exploitation** | 🟠 HIGH | Manipulating agents to abuse integrated tools |
-| **AAI07** | 📦 **Agentic Supply Chain** | 🟠 HIGH | Compromised MCP servers, plugins, and agent dependencies |
-| **AAI08** | 💾 **Memory & Context Poisoning** | 🟠 HIGH | Injecting malicious data into persistent agent memory |
-| **AAI09** | ⚡ **Cascading Failures** | 🟡 MEDIUM | Single-agent vulnerabilities propagating across systems |
-| **AAI10** | 👾 **Rogue Agents** | 🔴 CRITICAL | Compromised agents operating outside monitoring boundaries |
+| **ASI01** | 🎯 **Agent Goal Hijack** | 🔴 CRITICAL | Redirecting agent objectives via prompt injection, deceptive tool outputs, or poisoned data |
+| **ASI02** | 🔧 **Tool Misuse & Exploitation** | 🔴 CRITICAL | Agents misusing legitimate tools due to prompt injection, misalignment, or unsafe delegation |
+| **ASI03** | 🔑 **Identity & Privilege Abuse** | 🔴 CRITICAL | Exploiting inherited/cached credentials, delegated permissions, or agent-to-agent trust |
+| **ASI04** | 📦 **Agentic Supply Chain Vulnerabilities** | 🟠 HIGH | Malicious or tampered tools, descriptors, models, or agent personas |
+| **ASI05** | 💻 **Unexpected Code Execution** | 🟠 HIGH | Agents generating or executing attacker-controlled code |
+| **ASI06** | 💾 **Memory & Context Poisoning** | 🟠 HIGH | Persistent corruption of agent memory, RAG stores, or contextual knowledge |
+| **ASI07** | 📡 **Insecure Inter-Agent Communication** | 🟠 HIGH | Spoofed inter-agent messages misdirecting entire clusters |
+| **ASI08** | ⚡ **Cascading Failures** | 🟡 MEDIUM | False signals cascading through automated pipelines with escalating impact |
+| **ASI09** | 🧠 **Human-Agent Trust Exploitation** | 🟡 MEDIUM | Confident, polished explanations misleading human operators into approving harmful actions |
+| **ASI10** | 👾 **Rogue Agents** | 🔴 CRITICAL | Compromised or misaligned agents diverging from intended behavior |
 
 ### **Mapping LLM Top 10 to Agentic Top 10**
 
 | LLM Vulnerability | Related Agentic Vulnerability | Key Difference |
 |------------------|------------------------------|----------------|
-| LLM01: Prompt Injection | AAI01: Agent Goal Hijack | Agentic extends to multi-step reasoning manipulation |
-| LLM06: Excessive Agency | AAI02: Identity & Privilege Abuse | Adds NHI and dynamic permission concerns |
-| LLM03: Supply Chain | AAI07: Agentic Supply Chain | Adds MCP servers, agent plugins |
-| LLM05: Improper Output | AAI03: Unexpected Code Execution | Focuses on code generation/execution |
-| *New* | AAI08: Memory Poisoning | Unique to stateful agents |
-| *New* | AAI10: Rogue Agents | Unique to autonomous systems |
+| LLM01: Prompt Injection | ASI01: Agent Goal Hijack | Agentic extends to multi-step reasoning manipulation |
+| LLM06: Excessive Agency | ASI03: Identity & Privilege Abuse | Adds NHI and dynamic permission concerns |
+| LLM03: Supply Chain | ASI04: Agentic Supply Chain | Adds MCP servers, agent plugins |
+| LLM05: Improper Output | ASI05: Unexpected Code Execution | Focuses on code generation/execution |
+| *New* | ASI02: Tool Misuse & Exploitation | Unique to tool-using agents |
+| *New* | ASI06: Memory & Context Poisoning | Unique to stateful agents |
+| *New* | ASI10: Rogue Agents | Unique to autonomous systems |
 
 ### **Key Differences: LLM vs Agentic Threats**
 
@@ -255,9 +265,9 @@ The top three concerns differ fundamentally:
 
 | Traditional LLM Top 3 | Agentic AI Top 3 |
 |----------------------|------------------|
-| 1. Prompt Injection | 1. **Memory Poisoning** (persists across sessions) |
-| 2. Sensitive Info Disclosure | 2. **Tool Misuse** (lateral movement, RCE) |
-| 3. Supply Chain | 3. **Privilege Compromise** (dynamic access exploitation) |
+| 1. Prompt Injection | 1. **Agent Goal Hijack** (multi-step reasoning manipulation) |
+| 2. Sensitive Info Disclosure | 2. **Tool Misuse & Exploitation** (lateral movement, RCE) |
+| 3. Supply Chain | 3. **Identity & Privilege Abuse** (dynamic access exploitation) |
 
 ---
 
@@ -380,14 +390,15 @@ Secure Agent: Requests human approval for high-risk actions
 
 ### **AI Red Teaming Platforms**
 
-#### **1. 🔴 Garak**
-**Purpose**: Comprehensive LLM vulnerability scanner
+#### **1. 🔴 Garak (NVIDIA)**
+**Purpose**: Generative AI Red-teaming and Assessment Kit — comprehensive LLM vulnerability scanner with 100+ attack modules
 **Capabilities:**
 - Hallucination detection
-- Data leakage assessment  
+- Data leakage assessment
 - Prompt injection testing
 - Toxicity and bias evaluation
 - Jailbreak attempt analysis
+- Functions like nmap but for LLMs
 
 ```bash
 # Installation
@@ -420,6 +431,30 @@ garak --model huggingface --model-name microsoft/DialoGPT-medium --probes prompt
 **Purpose**: Practice agentic security skills in controlled environment
 - Released alongside the Agentic Top 10
 - Hands-on testing of agentic vulnerabilities
+
+#### **5. 🆕 DeepTeam**
+**Purpose**: Open-source LLM red teaming framework by Confident AI (November 2025)
+**Capabilities:**
+- 40+ vulnerability types covering OWASP Top 10 for LLMs and NIST AI RMF
+- 10+ adversarial attack methods (single-turn and multi-turn conversational)
+- Automated vulnerability scanning and scoring
+- Extensible plugin architecture
+
+```bash
+# Installation
+pip install deepteam
+
+# Run a red team scan
+deepteam scan --model openai --attacks all --vulnerabilities owasp-top-10
+```
+
+#### **6. 🆕 Promptfoo**
+**Purpose**: Open-source LLM security testing tool used by 30,000+ developers
+**Capabilities:**
+- Prompt injection detection and testing
+- Jailbreak resistance evaluation
+- Data leak detection
+- CI/CD pipeline integration for continuous security testing
 
 ### **Custom Attack Tools**
 
@@ -484,7 +519,7 @@ def create_visual_jailbreak(text_instruction):
 #### **Agent Goal Hijack Tester**
 ```python
 class AgentGoalHijackTester:
-    """Test for AAI01: Agent Goal Hijack vulnerabilities"""
+    """Test for ASI01: Agent Goal Hijack vulnerabilities"""
     
     def __init__(self):
         self.hijack_patterns = [
@@ -523,7 +558,7 @@ class AgentGoalHijackTester:
 #### **Memory Poisoning Tester**
 ```python
 class MemoryPoisoningTester:
-    """Test for AAI08: Memory & Context Poisoning vulnerabilities"""
+    """Test for ASI06: Memory & Context Poisoning vulnerabilities"""
     
     def __init__(self):
         self.poisoning_payloads = [
@@ -687,7 +722,7 @@ class LLMSecurityPipeline:
 #### **Agent Behavior Monitor**
 ```python
 class AgentBehaviorMonitor:
-    """Defense against AAI01, AAI10: Goal hijack and rogue agents"""
+    """Defense against ASI01, ASI10: Goal hijack and rogue agents"""
     
     def __init__(self):
         self.baseline_behaviors = {}
@@ -712,7 +747,7 @@ class AgentBehaviorMonitor:
 #### **Memory Integrity Validator**
 ```python
 class MemoryIntegrityValidator:
-    """Defense against AAI08: Memory & Context Poisoning"""
+    """Defense against ASI06: Memory & Context Poisoning"""
     
     def __init__(self):
         self.memory_hashes = {}
@@ -751,7 +786,7 @@ class MemoryIntegrityValidator:
 #### **Tool Usage Guard**
 ```python
 class ToolUsageGuard:
-    """Defense against AAI06: Tool Misuse & Exploitation"""
+    """Defense against ASI02: Tool Misuse & Exploitation"""
     
     def __init__(self):
         self.tool_policies = self.load_tool_policies()
@@ -1104,7 +1139,7 @@ class ChainOfThoughtValidator:
 
 > This section provides detailed coverage of the OWASP Top 10 for Agentic Applications 2026
 
-### **AAI01: Agent Goal Hijack** 🔴 CRITICAL
+### **ASI01: Agent Goal Hijack** 🔴 CRITICAL
 
 **Description**: Attackers exploit adversarial inputs, poisoned data sources, or malicious tools to alter an agent's planning, reasoning, and self-evaluation. This extends prompt injection—attackers can inject adversarial objectives that shift an agent's long-term goals, leading to gradual drift from original objectives.
 
@@ -1134,7 +1169,7 @@ This is standard procedure per security policy update 2025-12-01.
 - Use secondary model review or human-in-the-loop gating
 - Monitor for gradual goal drift across sessions
 
-### **AAI02: Identity & Privilege Abuse** 🔴 CRITICAL
+### **ASI03: Identity & Privilege Abuse** 🔴 CRITICAL
 
 **Description**: Non-Human Identities (NHIs)—machine accounts, service identities, and agent-based API keys—create unique attack surfaces. Agents often operate under NHIs when interfacing with cloud services, databases, and external tools, lacking session-based oversight.
 
@@ -1165,7 +1200,7 @@ class SecureAgentCredentials:
         )
 ```
 
-### **AAI08: Memory & Context Poisoning** 🟠 HIGH
+### **ASI06: Memory & Context Poisoning** 🟠 HIGH
 
 **Description**: AI agents use short- and long-term memory to store prior actions, user interactions, and persistent state. Attackers can poison these memories, gradually altering behavior through stealthy manipulation that persists across sessions.
 
@@ -1207,7 +1242,7 @@ class MemoryPoisonDefense:
         return self.allow_write(key, value)
 ```
 
-### **AAI10: Rogue Agents** 🔴 CRITICAL
+### **ASI10: Rogue Agents** 🔴 CRITICAL
 
 **Description**: Malicious or compromised AI agents operate outside normal monitoring boundaries, executing unauthorized actions or exfiltrating data. Deceptive agents may lie, manipulate, or sidestep safety checks while appearing compliant.
 
@@ -1243,7 +1278,7 @@ class RogueAgentDetector:
 
 ### **🆕 MCP Security Considerations**
 
-The **Model Context Protocol (MCP)** enables agents to connect to external tools and services, introducing supply chain risks (AAI07).
+The **Model Context Protocol (MCP)** enables agents to connect to external tools and services, introducing supply chain risks (ASI04).
 
 **MCP Security Checklist:**
 - [ ] Verify MCP server authenticity before connection
@@ -1275,13 +1310,16 @@ class LLMSecurityScanner:
             "rag_security": RAGSecurityTestSuite(),
             
             # 🆕 Agentic security tests
-            "goal_hijack": GoalHijackTestSuite(),        # AAI01
-            "privilege_abuse": PrivilegeAbuseTestSuite(), # AAI02
-            "code_execution": CodeExecutionTestSuite(),   # AAI03
-            "interagent_comm": InterAgentCommTestSuite(), # AAI04
-            "tool_misuse": ToolMisuseTestSuite(),        # AAI06
-            "memory_poisoning": MemoryPoisonTestSuite(), # AAI08
-            "rogue_agent": RogueAgentTestSuite()         # AAI10
+            "goal_hijack": GoalHijackTestSuite(),        # ASI01
+            "tool_misuse": ToolMisuseTestSuite(),        # ASI02
+            "privilege_abuse": PrivilegeAbuseTestSuite(), # ASI03
+            "supply_chain": SupplyChainTestSuite(),       # ASI04
+            "code_execution": CodeExecutionTestSuite(),   # ASI05
+            "memory_poisoning": MemoryPoisonTestSuite(),  # ASI06
+            "interagent_comm": InterAgentCommTestSuite(), # ASI07
+            "cascading_failure": CascadingFailureTestSuite(), # ASI08
+            "trust_exploitation": TrustExploitTestSuite(), # ASI09
+            "rogue_agent": RogueAgentTestSuite()          # ASI10
         }
         
         self.report_generator = SecurityReportGenerator()
@@ -1350,16 +1388,16 @@ The AIVSS provides standardized risk assessment specifically for AI systems, wit
 - [ ] Action approval workflows
 
 **🆕 ✅ Agentic Top 10 Security**
-- [ ] Goal consistency validation (AAI01)
-- [ ] Least-privilege NHI credentials (AAI02)
-- [ ] Code execution sandboxing (AAI03)
-- [ ] Inter-agent communication signing (AAI04)
-- [ ] Human oversight for high-risk actions (AAI05)
-- [ ] Tool usage policies and rate limiting (AAI06)
-- [ ] MCP server allowlisting (AAI07)
-- [ ] Memory integrity validation (AAI08)
-- [ ] Cascading failure circuit breakers (AAI09)
-- [ ] Behavioral anomaly detection (AAI10)
+- [ ] Goal consistency validation (ASI01)
+- [ ] Tool usage policies and rate limiting (ASI02)
+- [ ] Least-privilege NHI credentials (ASI03)
+- [ ] Agentic supply chain verification (ASI04)
+- [ ] Code execution sandboxing (ASI05)
+- [ ] Memory integrity validation (ASI06)
+- [ ] Inter-agent communication signing (ASI07)
+- [ ] Cascading failure circuit breakers (ASI08)
+- [ ] Human oversight for high-risk actions (ASI09)
+- [ ] Behavioral anomaly detection (ASI10)
 
 ### **3. 🎯 Risk Assessment Matrix**
 
@@ -1467,15 +1505,81 @@ Anthropic disclosed that AI agents were being used in sophisticated cyber espion
 - Acceleration of OWASP Agentic Security Initiative
 
 **🔧 Root Cause:**
-- Agents operating with excessive permissions (AAI02)
-- Insufficient monitoring of agent behavior (AAI10)
-- Lack of tool usage controls (AAI06)
+- Agents operating with excessive permissions (ASI03)
+- Insufficient monitoring of agent behavior (ASI10)
+- Lack of tool usage controls (ASI02)
 
 **✅ Lessons Learned:**
 - Agent behavior monitoring is essential
 - Tool access controls must be granular
 - Memory and context require integrity validation
 - Human-in-the-loop for high-risk actions is critical
+
+### **🆕 Case Study 4: EchoLeak - Microsoft 365 Copilot Zero-Click Attack (2025)**
+
+**🚨 Incident Overview:**
+Security researchers discovered EchoLeak (CVE-2025-32711), a zero-click prompt injection vulnerability in Microsoft 365 Copilot that could force the AI assistant to exfiltrate sensitive business data to an external URL without any user interaction.
+
+**💥 Impact:**
+- Sensitive business data exfiltration without user awareness
+- Zero-click attack requiring no user interaction or approval
+- Demonstrated real-world risk of indirect prompt injection in enterprise AI assistants
+
+**🔧 Root Cause:**
+- Indirect prompt injection via character substitutions that bypassed safety filters
+- Insufficient validation of AI-generated actions involving external URLs
+- Lack of user confirmation for data exfiltration operations
+
+**✅ Lessons Learned:**
+- Enterprise AI assistants must validate all outbound data transfers
+- Zero-click attack vectors require defense-in-depth approaches
+- Character substitution and encoding attacks must be tested in safety evaluations
+- Human approval should be mandatory for any action sending data externally
+
+### **🆕 Case Study 5: DeepSeek R1 Security Vulnerabilities (2025-2026)**
+
+**🚨 Incident Overview:**
+Multiple security research firms identified significant security weaknesses in DeepSeek R1, a Chinese-developed open-source LLM. CrowdStrike found that politically sensitive prompts triggered increased code vulnerability rates, while Qualys found it failed 58% of jailbreak tests.
+
+**💥 Impact:**
+- CrowdStrike: Code vulnerability rate jumped from 19% baseline to 27.2% when given politically sensitive prompts (Tibet, Uyghurs, Falun Gong)
+- Qualys: Ranked 17th out of 19 tested LLMs with 77% attack success rate (vs. OpenAI o1-preview's 27%)
+- Enkrypt AI: 11x more likely to generate harmful output than OpenAI o1, 4x more likely to produce insecure code
+- Exposed ClickHouse database left publicly accessible without authentication
+- All user interactions stored in China, raising GDPR/CCPA compliance concerns
+
+**🔧 Root Cause:**
+- "Intrinsic kill switch" behavior — model refused to generate code 45% of the time when prompted about certain political topics
+- Chain-of-Thought exploitation through exposed `<think>` tags enabling guardrail bypass
+- Insufficient safety alignment compared to Western frontier models
+- Transparency gap: "fully open-source" claim but no training dataset or detailed training code released
+
+**✅ Lessons Learned:**
+- Open-source models require independent security evaluation before deployment
+- Geopolitical considerations affect model behavior and safety properties
+- Chain-of-Thought reasoning exposure creates novel attack surfaces
+- Organizations must evaluate regulatory compliance implications of model data storage locations
+
+### **🆕 Case Study 6: First Malicious MCP Server on npm (2025)**
+
+**🚨 Incident Overview:**
+In September 2025, the first malicious Model Context Protocol (MCP) server was discovered on npm, representing a supply chain attack specifically targeting agentic AI systems.
+
+**💥 Impact:**
+- Demonstrated viability of supply chain attacks against AI agent ecosystems
+- Validated concerns raised by OWASP Agentic Top 10 ASI04 (Agentic Supply Chain Vulnerabilities)
+- Highlighted risks of the rapidly growing MCP ecosystem
+
+**🔧 Root Cause:**
+- Lack of MCP server verification and signing mechanisms
+- Insufficient vetting of third-party MCP servers in package registries
+- Agents granting broad permissions to unverified tool integrations
+
+**✅ Lessons Learned:**
+- MCP server allowlisting is essential (ASI04 mitigation)
+- Verify MCP server authenticity and audit capabilities before enabling
+- Monitor MCP server communications for anomalous behavior
+- Apply supply chain security best practices to AI tool ecosystems
 
 ---
 
@@ -1542,6 +1646,53 @@ class LLMGovernanceFramework:
 
 ---
 
+## 🆕 AI Regulations & Compliance (2026)
+
+### **EU AI Act — Key 2026 Milestones**
+
+The EU AI Act is the world's first comprehensive AI regulation framework with extraterritorial application (the "Brussels Effect") affecting the global $524B AI market.
+
+| **Date** | **Milestone** | **Impact** |
+|----------|--------------|------------|
+| **Feb 2, 2025** | Prohibited AI practices banned | Subliminal manipulation, social scoring, real-time biometric ID (with exceptions) |
+| **Aug 2, 2025** | GPAI model obligations effective | Transparency, copyright compliance, safety evaluations for systemic risk models |
+| **Aug 2, 2026** | **High-risk AI systems must comply** | Biometrics, critical infrastructure, education, employment, law enforcement, migration, justice |
+| **Aug 2, 2026** | Article 50 transparency obligations | AI interaction disclosure, synthetic content labeling, deepfake identification |
+| **Aug 2, 2026** | AI regulatory sandboxes required | Each EU member state must establish at least one AI regulatory sandbox |
+
+**Key Requirements for LLM Deployments:**
+- **Transparency**: Users must be informed when interacting with AI systems
+- **Risk Assessment**: High-risk AI systems require conformity assessments
+- **Data Governance**: Training data quality, relevance, and bias management
+- **Human Oversight**: Meaningful human control mechanisms for high-risk systems
+- **Documentation**: Technical documentation and record-keeping obligations
+
+### **Other Active Regulatory Frameworks**
+
+| **Framework** | **Scope** | **Key Requirements** |
+|--------------|-----------|---------------------|
+| **NIST AI RMF** | US voluntary framework | Risk identification, assessment, and mitigation for AI systems |
+| **ISO/IEC 42001** | International standard | AI Management System requirements for responsible AI development |
+| **NIST AI 600-1** | US AI security | AI Red Teaming guidelines and generative AI risk profile |
+
+### **Compliance Checklist for LLM Applications**
+
+**✅ EU AI Act Compliance**
+- [ ] AI system risk classification completed
+- [ ] Transparency obligations implemented (AI interaction disclosure)
+- [ ] Human oversight mechanisms in place for high-risk systems
+- [ ] Technical documentation prepared and maintained
+- [ ] Conformity assessment completed (if high-risk)
+- [ ] Incident reporting procedures established
+
+**✅ Data Protection**
+- [ ] GDPR/CCPA compliance for training data and user interactions
+- [ ] Data processing agreements with AI model providers
+- [ ] User consent mechanisms for AI-processed data
+- [ ] Right to explanation for AI-driven decisions
+
+---
+
 ## 📚 Resources & References
 
 ### **🔗 Official OWASP Resources**
@@ -1569,12 +1720,16 @@ class LLMGovernanceFramework:
 ### **🛠️ Security Tools and Frameworks**
 
 #### **Open Source Security Tools**
-- **[Garak](https://github.com/leondz/garak)**: LLM vulnerability scanner
+- **[Garak](https://github.com/leondz/garak)**: NVIDIA's generative AI red-teaming & assessment kit (100+ attack modules)
+- **[DeepTeam](https://github.com/confident-ai/deepteam)**: LLM red teaming framework (40+ vulnerability types, OWASP/NIST support)
+- **[Promptfoo](https://github.com/promptfoo/promptfoo)**: Prompt injection, jailbreak, and data leak testing (30K+ developers)
+- **[PyRIT](https://github.com/Azure/PyRIT)**: Microsoft's Python Risk Identification Tool for AI red teaming
+- **[ARTKIT](https://github.com/BCG-X-Official/artkit)**: Automated multi-turn adversarial prompt generation framework
 - **[LLM Guard](https://github.com/protectai/llm-guard)**: Comprehensive protection toolkit
 - **[NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails)**: NVIDIA's safety framework
 - **[Langfuse](https://github.com/langfuse/langfuse)**: LLM observability and monitoring
 - **[LLMFuzzer](https://github.com/mnns/LLMFuzzer)**: AI system fuzzing tool
-- **[PyRIT](https://github.com/Azure/PyRIT)**: Microsoft's AI red teaming tool
+- **[Meta LlamaFirewall](https://github.com/meta-llama/PurpleLlama)**: Open-source AI protection (Llama Guard 4, Prompt Guard 2)
 
 #### **Enterprise Platforms**
 - **Amazon Bedrock Guardrails**: AWS enterprise AI safety
@@ -1607,10 +1762,28 @@ class LLMGovernanceFramework:
 - **"Confused Deputy Risks in RAG-based LLMs"** - Analysis of RAG-specific threats
 - **"How RAG Poisoning Made Llama3 Racist!"** - Practical RAG attack demonstrations
 
-#### **🆕 Agentic Security (2025)**
+#### **🆕 Agentic Security (2025-2026)**
 - **OWASP Agentic AI Threats and Mitigations v1.0**
 - **"Memory Poisoning in Autonomous AI Systems"** - Emerging research
 - **"Multi-Agent Security: Cascading Failures and Trust Exploitation"**
+
+#### **🆕 DeepSeek R1 Security Research (2025)**
+- **CrowdStrike** - "Hidden Vulnerabilities in AI-Coded Software" - Politically-triggered code vulnerability analysis
+- **Qualys** - "DeepSeek Failed Over Half of Jailbreak Tests" - Comprehensive jailbreak resistance evaluation
+- **Enkrypt AI** - DeepSeek R1 safety comparison (11x more harmful output than OpenAI o1)
+- **Trend Micro** - "Exploiting DeepSeek R1" - Chain-of-Thought exploitation via exposed `<think>` tags
+- **Palo Alto Networks Unit 42** - Crescendo, Deceptive Delight, and Bad Likert Judge attack analysis
+
+#### **🆕 AI Regulations & Standards**
+- **EU AI Act** - [Official regulatory framework](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
+- **NIST AI RMF** - AI Risk Management Framework
+- **NIST AI 600-1** - Generative AI Risk Profile and Red Teaming Guidelines
+- **ISO/IEC 42001** - AI Management System Standard
+
+#### **🆕 AI Security Incident Reports**
+- **Adversa AI** - "2025 AI Security Incidents Report" - 56.4% rise in AI-related security incidents
+- **Cisco** - "State of AI Security 2026" - Gen AI traffic up 890%, security incidents doubled
+- **Stanford HAI AI Index** - Comprehensive tracking of AI security trends
 
 ---
 
@@ -1696,7 +1869,7 @@ This project is licensed under the **MIT License**, promoting open collaboration
 ```
 MIT License
 
-Copyright (c) 2024-2025 LLM Security Guide Contributors
+Copyright (c) 2024-2026 LLM Security Guide Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and documentation to deal in the Software without restriction,
@@ -1726,20 +1899,36 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 <div align="center">
 
-## 🆕 Changelog - December 2025 Update
+## 🆕 Changelog
+
+### February 2026 Update
 
 | Section | Change Type | Description |
 |---------|-------------|-------------|
-| Header/Badges | 🔄 Updated | Added Agentic AI badge, updated date to Dec 2025 |
+| **OWASP Agentic Top 10** | 🔴 **Critical Fix** | Corrected identifier prefix from AAI to official ASI (ASI01-ASI10) with correct ordering |
+| Header/Title | 🔄 Updated | Changed to "2026 Edition", updated badge to February 2026 |
+| LLM Ecosystem | 🔄 Updated | Updated to GPT-5.x, Claude Opus 4.6, Gemini 3.x, Llama 4 |
+| Security Tools | 🆕 Added | DeepTeam, Promptfoo, ARTKIT, Meta LlamaFirewall/Llama Guard 4 |
+| Case Studies | 🆕 Added | EchoLeak (CVE-2025-32711), DeepSeek R1, first malicious MCP server |
+| AI Regulations | 🆕 **New Section** | EU AI Act 2026 milestones, NIST AI RMF, ISO/IEC 42001 |
+| Resources | 🆕 Added | DeepSeek R1 research, AI regulation references, new red teaming tools |
+| Security Scanner | 🔄 Updated | Expanded to full ASI01-ASI10 test coverage |
+| All ASI References | 🔴 **Critical Fix** | All AAI→ASI with corrected numbering across entire document |
+
+### December 2025 Update
+
+| Section | Change Type | Description |
+|---------|-------------|-------------|
+| Header/Badges | 🔄 Updated | Added Agentic AI badge |
 | Breaking Update | 🆕 New | Added prominent announcement for Agentic Top 10 |
 | What's New | 🔄 Expanded | Added Agentic Top 10 summary table |
 | Understanding LLMs | 🆕 Added | "What is Agentic AI?" subsection |
-| OWASP Agentic Top 10 | 🆕 **New Section** | Complete coverage of AAI01-AAI10 |
+| OWASP Agentic Top 10 | 🆕 **New Section** | Complete coverage of ASI01-ASI10 |
 | Offensive Tools | 🆕 Added | Agent Goal Hijack Tester, Memory Poisoning Tester |
 | Defensive Tools | 🆕 Added | Agent Behavior Monitor, Memory Integrity Validator, Tool Usage Guard |
-| Agentic AI Deep Dives | 🆕 **New Section** | Detailed coverage of AAI01, AAI02, AAI08, AAI10, MCP Security |
+| Agentic AI Deep Dives | 🆕 **New Section** | Detailed coverage of ASI01, ASI03, ASI06, ASI10, MCP Security |
 | Security Checklist | 🆕 Added | Complete Agentic Top 10 checklist (10 new items) |
-| Security Scanner | 🔄 Updated | Added 7 new agentic test suites |
+| Security Scanner | 🔄 Updated | Added agentic test suites |
 | Case Studies | 🆕 Added | Anthropic AI Agent Espionage case study |
 | Enterprise Architecture | 🔄 Updated | Added AgentSecurityLayer |
 | Resources | 🆕 Added | All new OWASP Agentic Security publications, AIVSS |
@@ -1758,8 +1947,8 @@ This guide represents the collective knowledge of cybersecurity professionals, A
 
 ---
 
-**© 2024-2025 LLM Security Guide Contributors | MIT License | Community Driven**
+**© 2024-2026 LLM Security Guide Contributors | MIT License | Community Driven**
 
-*Last Updated: December 2025 with OWASP Top 10 for LLMs 2025 & OWASP Top 10 for Agentic Applications 2026*
+*Last Updated: February 2026 with OWASP Top 10 for LLMs 2025 & OWASP Top 10 for Agentic Applications 2026 (ASI01-ASI10)*
 
 </div>
