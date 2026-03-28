@@ -1763,6 +1763,7 @@ The EU AI Act is the world's first comprehensive AI regulation framework with ex
 - **"How RAG Poisoning Made Llama3 Racist!"** - Practical RAG attack demonstrations
 
 #### **🆕 Agentic Security (2025-2026)**
+- **"Internal Safety Collapse in Frontier Large Language Models"** - Wu et al., 2026 [[Paper](https://arxiv.org/abs/2603.23509)] [[Code](https://github.com/wuyoscar/ISC-Bench)] - Novel failure mode: agents produce harmful content as a side effect of completing normal tasks. Jailbreaks any frontier LLM in pass@3. Black-box, cross-domain.
 - **OWASP Agentic AI Threats and Mitigations v1.0**
 - **"Memory Poisoning in Autonomous AI Systems"** - Emerging research
 - **"Multi-Agent Security: Cascading Failures and Trust Exploitation"**
