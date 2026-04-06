@@ -1691,6 +1691,14 @@ The EU AI Act is the world's first comprehensive AI regulation framework with ex
 - [ ] User consent mechanisms for AI-processed data
 - [ ] Right to explanation for AI-driven decisions
 
+### **Compliance Automation Tools**
+
+| **Tool** | **Type** | **Description** |
+|----------|----------|-----------------|
+| [Asqav SDK](https://github.com/jagmarques/asqav-sdk) | Python SDK | AI agent compliance validation against EU AI Act and OWASP Agentic Top 10. `pip install asqav`. MIT license |
+| [Asqav Compliance](https://github.com/jagmarques/asqav-compliance) | GitHub Action | CI/CD compliance checks for AI agent codebases. Runs on every PR to catch compliance drift |
+| [Asqav MCP](https://github.com/jagmarques/asqav-mcp) | MCP Server | Model Context Protocol server for real-time compliance monitoring and audit report generation |
+
 ---
 
 ## 📚 Resources & References
