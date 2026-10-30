@@ -456,6 +456,11 @@ deepteam scan --model openai --attacks all --vulnerabilities owasp-top-10
 - Data leak detection
 - CI/CD pipeline integration for continuous security testing
 
+#### **7. 🆕 Pwned Labs free prompt injection labs**
+**Purpose**: Practice prompt injection against hosted, deliberately vulnerable AI applications, with no setup or cloud account needed
+- [Prompt Injection to Cloud Access](https://pwnedlabs.io/explore/breach-the-perimeter-via-prompt-injection): direct prompt injection that extracts a leaked cloud credential from an AI assistant
+- [Indirect Prompt Injection to Reach Azure](https://pwnedlabs.io/explore/exploit-indirect-prompt-injection-for-azure-access): indirect injection through retrieved content that leads to Azure access
+
 ### **Custom Attack Tools**
 
 #### **Prompt Injection Framework**
