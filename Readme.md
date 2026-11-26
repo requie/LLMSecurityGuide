@@ -1730,6 +1730,7 @@ The EU AI Act is the world's first comprehensive AI regulation framework with ex
 - **[Langfuse](https://github.com/langfuse/langfuse)**: LLM observability and monitoring
 - **[LLMFuzzer](https://github.com/mnns/LLMFuzzer)**: AI system fuzzing tool
 - **[Meta LlamaFirewall](https://github.com/meta-llama/PurpleLlama)**: Open-source AI protection (Llama Guard 4, Prompt Guard 2)
+- **[Agentegrity](https://github.com/Cogensec/agentegrity)**: Checks agent tool calls against a host-issued task mandate before they run and keeps a hash-chained, optionally signed record of each decision (built at Cogensec, where I work)
 
 #### **Enterprise Platforms**
 - **Amazon Bedrock Guardrails**: AWS enterprise AI safety
